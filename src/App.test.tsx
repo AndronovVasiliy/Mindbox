@@ -1,9 +1,16 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import setupStore from './store/store';
+const store = setupStore()
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+it('render without crush', () => {
+    
+    render(
+        <BrowserRouter>
+            <Provider store = {store}>
+                <App />
+            </Provider>
+        </BrowserRouter>)
+})

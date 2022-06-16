@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { Header } from './components/Header/Header';
+import AllDoneTask from './components/Main/AllDoneTask/AllDoneTask';
+import AllNotDone from './components/Main/AllDoneTask/AllNotDone';
+import AllTask from './components/Main/AllDoneTask/AllTask';
+import { ListToDoList } from './components/Main/ListToDoList/ListToDoList';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Header />
       </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<ListToDoList />} />
+          <Route path="/alldone" element={<AllDoneTask />} />
+          <Route path="/allnotdone" element={<AllNotDone />} />
+          <Route path="/alltask" element={<AllTask />} />
+        </Routes>
+      </main>
     </div>
   );
 }
